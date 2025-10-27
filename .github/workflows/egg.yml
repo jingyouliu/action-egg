@@ -1,4 +1,8 @@
+name: 打包React项目
 on: push
+
+permissions:
+  contents: write
 
 # jobs:
 #   job1:
