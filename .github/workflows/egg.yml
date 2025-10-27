@@ -12,8 +12,20 @@ on: push
 #       - run: node --version
 jobs:
   npm-bulid:
+    name: npm-build工作
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - run: npm install
-      - run: npm run build
+    - name: 读取仓库内容
+      uses: actions/checkout@v4
+      
+    - name: 安装依赖和项目打包
+      run: |
+        npm install
+        npm run build
+    
+    - name: 部署
+      uses: jamesives/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages
+        folder: build
